@@ -224,3 +224,11 @@ def calculate_flops_from_model(model):
 def to_gflops(flops):
     return flops / 1e9
 
+param_grid = {
+    'model__activation': ['relu', 'sigmoid', 'softmax', 'tanh'],
+    'model__loss_function': ['sparse_categorical_crossentropy', 'binary_crossentropy', 'hinge'],
+    'model__optimizer': ['SGD', 'Adam', 'Nadam', 'RMSprop'],
+    'model__learning_rate': [0.001, 0.01, 0.1],
+    'batch_size': [16, 32, 64],
+    'epochs': [50, 100]
+}
