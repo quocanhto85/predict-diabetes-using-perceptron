@@ -95,41 +95,26 @@ def visualize_gridsearch(grid_result):
     sns.set_palette('muted')
 
     # Create a single figure for all the plots
-    fig, axes = plt.subplots(3, 2, figsize=(20, 18))
+    fig, axes = plt.subplots(1, 3, figsize=(24, 8))
     fig.suptitle('Grid Search Results: Hyperparameter Effects on Accuracy', fontsize=18, fontweight='bold')
 
     # Boxplot for activation functions
-    sns.boxplot(x='model__activation', y='accuracy', data=params_df, ax=axes[0, 0], palette='viridis')
-    axes[0, 0].set_title('Activation Function vs Accuracy', fontsize=15, fontweight='bold')
-    axes[0, 0].set_xlabel('Activation Function', fontsize=12)
-    axes[0, 0].set_ylabel('Accuracy', fontsize=12)
+    sns.boxplot(x='model__activation', y='accuracy', data=params_df, ax=axes[0], palette='viridis')
+    axes[0].set_title('Activation Function vs Accuracy', fontsize=15, fontweight='bold')
+    axes[0].set_xlabel('Activation Function', fontsize=12)
+    axes[0].set_ylabel('Accuracy', fontsize=12)
 
     # Boxplot for optimizers
-    sns.boxplot(x='model__optimizer', y='accuracy', data=params_df, ax=axes[0, 1], palette='coolwarm')
-    axes[0, 1].set_title('Optimizer vs Accuracy', fontsize=15, fontweight='bold')
-    axes[0, 1].set_xlabel('Optimizer', fontsize=12)
-    axes[0, 1].set_ylabel('Accuracy', fontsize=12)
+    sns.boxplot(x='model__optimizer', y='accuracy', data=params_df, ax=axes[1], palette='coolwarm')
+    axes[1].set_title('Optimizer vs Accuracy', fontsize=15, fontweight='bold')
+    axes[1].set_xlabel('Optimizer', fontsize=12)
+    axes[1].set_ylabel('Accuracy', fontsize=12)
 
-    # Line plot for learning rate
-    sns.lineplot(x='model__learning_rate', y='accuracy', data=params_df, ax=axes[1, 0], marker='o', linewidth=2, markersize=8, color='royalblue')
-    axes[1, 0].set_title('Learning Rate vs Accuracy', fontsize=15, fontweight='bold')
-    axes[1, 0].set_xlabel('Learning Rate', fontsize=12)
-    axes[1, 0].set_ylabel('Accuracy', fontsize=12)
-
-    # Line plot for batch size
-    sns.lineplot(x='batch_size', y='accuracy', data=params_df, ax=axes[1, 1], marker='o', linewidth=2, markersize=8, color='darkorange')
-    axes[1, 1].set_title('Batch Size vs Accuracy', fontsize=15, fontweight='bold')
-    axes[1, 1].set_xlabel('Batch Size', fontsize=12)
-    axes[1, 1].set_ylabel('Accuracy', fontsize=12)
-
-    # Line plot for epochs
-    sns.lineplot(x='epochs', y='accuracy', data=params_df, ax=axes[2, 0], marker='o', linewidth=2, markersize=8, color='seagreen')
-    axes[2, 0].set_title('Epochs vs Accuracy', fontsize=15, fontweight='bold')
-    axes[2, 0].set_xlabel('Epochs', fontsize=12)
-    axes[2, 0].set_ylabel('Accuracy', fontsize=12)
-    
-    # Turn off the empty subplot (bottom-right)
-    fig.delaxes(axes[2, 1])
+    # Boxplot for loss functions
+    sns.boxplot(x='model__loss_function', y='accuracy', data=params_df, ax=axes[2], palette='magma')
+    axes[2].set_title('Loss Function vs Accuracy', fontsize=15, fontweight='bold')
+    axes[2].set_xlabel('Loss Function', fontsize=12)
+    axes[2].set_ylabel('Accuracy', fontsize=12)
 
     # Adjust layout for better spacing
     plt.tight_layout(rect=[0, 0, 1, 0.95])
