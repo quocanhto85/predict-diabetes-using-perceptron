@@ -59,7 +59,7 @@ def plot_learning_curves(history, title):
     ax1.set_xlabel('Epochs')
     ax1.set_ylabel('Accuracy')
     ax1.set_title(f'Training Accuracy vs. Validation Accuracy ({title})')
-    ax1.legend()
+    ax1.legend(prop={'size': 16}) 
     ax1.grid(True)
 
     # Plotting training loss vs. validation loss
@@ -68,11 +68,12 @@ def plot_learning_curves(history, title):
     ax2.set_xlabel('Epochs')
     ax2.set_ylabel('Loss')
     ax2.set_title(f'Training Loss vs. Validation Loss ({title})')
-    ax2.legend()
+    ax2.legend(prop={'size': 16}) 
     ax2.grid(True)
     
     plt.tight_layout()
     plt.show()
+
     
 def visualize_gridsearch(grid_result):
     # Convert the GridSearchCV results to a pandas DataFrame for easy visualization
